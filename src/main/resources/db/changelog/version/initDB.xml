@@ -1,0 +1,56 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="rezorl" id="14-07-2019-01">
+
+        <!--create table users-->
+        <createTable tableName="Users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_non_expired" defaultValue="true" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_non_locked" defaultValue="true" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credentials_non_expired" defaultValue="true" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" defaultValue="true" type="bit">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!--create table roles-->
+        <createTable tableName="Roles">
+            <column name="id" type="bigint" defaultValue="null">
+            </column>
+            <column name="role" type="int">
+            </column>
+        </createTable>
+
+        <!--add foreign key id user to table roles-->
+        <addForeignKeyConstraint
+                baseColumnNames="id"
+                baseTableName="Roles"
+                constraintName="fk_roles_user_id"
+                referencedColumnNames="id"
+                referencedTableName="Users"/>
+
+    </changeSet>
+
+</databaseChangeLog>

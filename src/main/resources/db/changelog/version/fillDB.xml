@@ -1,0 +1,35 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet author="rezorl" id="14-07-2019-02">
+        <insert tableName="users">
+            <column name="username" value="admin"/>
+            <column name="email" value="admin@admin.com"/>
+            <column name="password" value="$2a$12$WBPxSo7AVPJzsnQJa3X8rujIixf6x3lOQ9GeClHWbdnOo4XYA5zyy"/><!--//admin-->
+        </insert>
+
+        <insert tableName="users">
+            <column name="username" value="client"/>
+            <column name="email" value="client@client.com"/>
+            <column name="password" value="$2a$12$/uA1G02KAfy9wATWvYqnI.zPOPaA7JMnbFi5aRDqoMuo38UUJ19Ti"/><!--//client-->
+        </insert>
+
+        <insert tableName="roles">
+            <column name="id" value="1"/>
+            <column name="role" value="0"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="id" value="1"/>
+            <column name="role" value="1"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="id" value="2"/>
+            <column name="role" value="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
